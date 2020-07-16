@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['maxmetcalf12']
   spec.email         = ['maxmetcalf12@gmail.com']
 
-  spec.summary       = 'Tailwind form builder that makes it easy to style forms using TailwindCSS'
+  spec.summary       = 'Tailwind form builder makes it easy to style forms consistently using TailwindCSS'
   spec.description   = 'Longer description'
-  # spec.homepage      = ""
+  spec.homepage      = 'https://github.com/maxmetcalf12/tailwind_form'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
 
