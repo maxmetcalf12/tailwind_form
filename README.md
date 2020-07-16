@@ -20,9 +20,61 @@ Or install it yourself as:
 
     $ gem install tailwind_form
 
+Our gem depends on having preset form classes set in your custom scss directory.
+A sample implementation is as follows:
+
+```scss
+.form__group {
+  @apply my-2;
+}
+
+.form__label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.form__inputGroup {
+  @apply mt-1 rounded-md shadow-sm;
+}
+
+.form__input {
+  @apply form-input block w-full;
+
+  @screen sm {
+    @apply text-sm leading-tight;
+  }
+}
+```
+
 ## Usage
 
-TODO: Write usage instructions here
+Here is an example of the form:
+
+```erb
+<%= tailwind_form_with model: Lead.new, class: "space-y-6" do |f| %>
+  <%= f.form_group :name %>
+  <%= f.form_group :email %>
+<% end %>
+```
+
+Which generates the following form:
+
+```html
+<form class="space-y-6" action="/leads" accept-charset="UTF-8" data-remote="true" method="post">
+  <input type="hidden" name="authenticity_token" value="S3wp;" />
+  <div class="form__group">
+    <label class="form__label" for="lead_name">Name</label>
+    <div class="form__inputGroup">
+      <input class="form__input" type="text" name="lead[name]" id="lead_name" />
+    </div>
+  </div>
+  <div class="form__group">
+    <label class="form__label" for="lead_email">Email</label>
+    <div class="form__inputGroup">
+      <input class="form__input" type="text" name="lead[email]" id="lead_email" />
+    </div>
+  </div>
+</form>
+```
 
 ## Development
 
