@@ -1,3 +1,69 @@
 require:
   - rubocop-performance
   - rubocop-rails
+
+AllCops:
+  Exclude:
+    - "bin/**/*"
+
+Layout/BlockAlignment:
+  EnforcedStyleAlignWith: start_of_block
+Layout/DefEndAlignment:
+  EnforcedStyleAlignWith: def
+  AutoCorrect: true
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+Layout/LineLength:
+  AutoCorrect: true
+  Max: 120
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Style/Alias:
+  Enabled: true
+  EnforcedStyle: prefer_alias_method
+Style/ExponentialNotation:
+  Enabled: true
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+Style/RegexpLiteral:
+  Enabled: true
+  AllowInnerSlashes: true
+Style/SlicingWithRange:
+  Enabled: true
+Style/SymbolArray:
+  Enabled: true
+  EnforcedStyle: brackets
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+Style/WordArray:
+  Enabled: true
+  EnforcedStyle: brackets
+
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
+
+#
+### DISABLED COPS
+#
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
