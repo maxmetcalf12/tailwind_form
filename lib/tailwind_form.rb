@@ -10,6 +10,14 @@ module TailwindForm
 
   eager_autoload do
     autoload :FormBuilder
+    autoload :Inputs
+  end
+
+  class << self
+    def eager_load!
+      super
+      TailwindForm::Inputs.eager_load!
+    end
   end
 end
 
