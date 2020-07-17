@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tailwind_form (0.0.1)
+    tailwind_form (0.0.2)
 
 GEM
   remote: https://rubygems.org/
