@@ -10,6 +10,8 @@ Benefits of `tailwind_form`
 * Reduces errors
 * Makes `.erb` forms much more readable
 
+This gem is largely based on the [Bootstrap Form Gem](https://github.com/bootstrap-ruby/bootstrap_form), but implemented for TailwindCSS.
+
 ## Requirements
 
 Currently, `tailwind_form` is only tested with
@@ -62,44 +64,70 @@ A sample implementation is as follows:
 Here is an example of the form:
 
 ```erb
-<%= tailwind_form_with model: Lead.new, class: "space-y-6" do |f| %>
-  <%= f.form_group :name %>
-  <%= f.form_group :email %>
+<%= tailwind_form_with(model: @person, local: true) do |form| %>
+  <%= form.form_group :first_name %>
+  <%= form.form_group :last_name %>
+  <%= form.form_group :email, :email_field %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>
+
 ```
 
 Which generates the following form:
 
 ```html
-<form class="space-y-6" action="/leads" accept-charset="UTF-8" data-remote="true" method="post">
-  <input type="hidden" name="authenticity_token" value="S3wp;" />
+<form action="/people" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value="cfuds;" />
   <div class="form__group">
-    <label class="form__label" for="lead_name">Name</label>
+    <label class="form__label" for="person_first_name">First name</label>
     <div class="form__inputGroup">
-      <input class="form__input" type="text" name="lead[name]" id="lead_name" />
+      <input class="form__input" type="text" name="person[first_name]" id="person_first_name" />
     </div>
   </div>
   <div class="form__group">
-    <label class="form__label" for="lead_email">Email</label>
+    <label class="form__label" for="person_last_name">Last name</label>
     <div class="form__inputGroup">
-      <input class="form__input" type="text" name="lead[email]" id="lead_email" />
+      <input class="form__input" type="text" name="person[last_name]" id="person_last_name" />
     </div>
+  </div>
+  <div class="form__group">
+    <label class="form__label" for="person_email">Email</label>
+    <div class="form__inputGroup">
+      <input class="form__input" type="email" name="person[email]" id="person_email" />
+    </div>
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Create Person" data-disable-with="Create Person" />
   </div>
 </form>
 ```
 
 ## Development
 
-TODO: Update this.
+After checking out the repo, run `bin/setup` to install dependencies.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+To install this gem onto your local machine, run `bundle exec rake install`.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## To do
+
+So far, we have implemented the basic form but only have `text_field`, `text_area`, and `email_field`. Next steps are implementing all of the other input types.
+
+Additionally, here are other items on the todo list:
+* Add support for errors, both as an alert and as inline error helper
+* Add different layout options
+* Add different options for select and multiselect using AlpineJS
+
+If anyone happens to be seeing/using this gem and can think of other features, please let me know!
 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/maxmetcalf12/tailwind_form. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/maxmetcalf12/tailwind_form/blob/master/CODE_OF_CONDUCT.md).
-
 
 ## License
 
